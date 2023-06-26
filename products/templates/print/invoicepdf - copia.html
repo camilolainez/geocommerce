@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Factura de venta</title>
+    <style>
+      /* Estilos generales */
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #555;
+      }
+      p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        padding: 0.75rem;
+        text-align: left;
+        vertical-align: top;
+        border-top: 1px solid #ccc;
+      }
+      th {
+        background-color: #f8f8f8;
+        font-weight: bold;
+        color: #555;
+      }
+      td:first-child {
+        width: 50%;
+      }
+      td:last-child {
+        text-align: right;
+      }
+      .total {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #555;
+      }
+      .footer {
+        margin-top: 2rem;
+        text-align: center;
+        color: #aaa;
+      }
+      /* Estilos específicos de la factura */
+      .invoice {
+        max-width: 800px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        padding: 2rem;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .invoice-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+      .invoice-header h1 {
+        font-size: 2rem;
+        color: #222;
+        margin-top: 0;
+      }
+      .invoice-number {
+        color: #777;
+      }
+      .invoice-date {
+        color: #777;
+      }
+      .invoice-details {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+      }
+      .invoice-details div {
+        text-align: center;
+      }
+      .invoice-details div p:first-child {
+        margin-top: 0;
+      }
+      .invoice-details div p:last-child {
+        margin-bottom: 0;
+      }
+      .invoice-details .buyer-details {
+        text-align: left;
+      }
+      .invoice-details .seller-details {
+        text-align: right;
+      }
+      .invoice-items {
+        margin-bottom: 2rem;
+      }
+      .invoice-items th {
+        text-align: center;
+      }
+      .invoice-items td:last-child {
+        text-align: right;
+      }
+      .invoice-summary {
+        margin-top: 2rem;
+      }
+      .invoice-summary td:last-child {
+        font-weight: bold;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="invoice">
+      <div class="invoice-header">
+        <img src="tu-logo.png" alt="Logo de tu empresa">
+        <div>
+          <h1>Fact
+          <div class="invoice-number">Factura No. 1234</div>
+          <div class="invoice-date">Fecha: 18 de abril de 2023</div>
+        </div>
+      </div>
+      <div class="invoice-details">
+        <div class="buyer-details">
+          <h3>Comprador</h3>
+          <p>NIT: 123456789-0</p>
+          <p>Dirección: Calle 123 #45-67</p>
+          <p>Teléfono: +123 456 789</p>
+          <p>Email: comprador@ejemplo.com</p>
+          <p>Página web: www.comprador-ejemplo.com</p>
+        </div>
+        <div class="seller-details">
+          <h3>Vendedor</h3>
+          <p>NIT: 987654321-0</p>
+          <p>Dirección: Carrera 54 #32-10</p>
+          <p>Teléfono: +123 456 789</p>
+          <p>Email: vendedor@ejemplo.com</p>
+          <p>Página web: www.vendedor-ejemplo.com</p>
+        </div>
+      </div>
+      <table class="invoice-items">
+        <thead>
+          <tr>
+            <th>Descripción</th>
+            <th>Precio unitario</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Producto 1</td>
+            <td>$100.00</td>
+            <td>2</td>
+            <td>$200.00</td>
+          </tr>
+          <tr>
+            <td>Producto 2</td>
+            <td>$50.00</td>
+            <td>3</td>
+            <td>$150.00</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3"></td>
+            <td>Subtotal: $350.00</td>
+          </tr>
+          <tr>
+            <td colspan="3"></td>
+            <td>Descuento: $0.00</td>
+          </tr>
+          <tr>
+            <td colspan="3"></td>
+            <td>IVA (19%): $66.50</td>
+          </tr>
+          <tr>
+            <td colspan="3"></td>
+            <td class="total">Total factura: $416.50</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="footer">
+        <p>Tu empresa S.A.</p>
+        <p>Dirección de ejemplo 123 - Ciudad - País</p>
+        <p>Teléfono: +123 456 789</p>
+        <p>Email: info@tu-empresa.com</p>
+        <p>Página web: www.tu-empresa.com</p>
+      </div>
+    </div>
+  </body>
+</html>

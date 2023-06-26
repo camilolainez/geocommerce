@@ -1,0 +1,48 @@
+{% load compress %}
+{% load static %}
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	  <meta name="PodSprint" content="">	  	  
+	  <title>PodSprint</title>	  
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
+	  
+
+  </head>
+	<body class="bg-gray-50">
+	
+	{% include "includes/navbar2.html" %}
+		
+			
+			{% block content %}
+			{% endblock content %}
+
+			{% block scripts %}
+    		{% endblock %}
+
+			{% block modals %}
+    		{% endblock %}
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/htmx.org@latest/dist/htmx.min.js"></script>
+		<script>
+			function openModal() {
+			    document.getElementById('defaultModalButton').click();
+			}
+		</script>
+		<script>
+			// htmx:afterSwap
+			document.getElementById('defaultModal').addEventListener('htmx:afterSwap', function(event) {
+				// check if the response is successful
+				if (event.detail.success) {
+					// close modal
+					$('#defaultModal').modal('hide');
+				}
+			});
+		</script>
+	</body>
+</html>
