@@ -2,26 +2,19 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import get_user_model, login, authenticate, logout
 from django.views import View
 from django.shortcuts import redirect
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponseServerError
 from django.urls import reverse
 from django.conf import settings
-#from django.http import JsonResponse
 from django.http import HttpResponse
 from .forms import CustomUserCreationForm
 from django.contrib import messages
-from accounts.models import Client, Domain
-from django_tenants.utils import schema_context
-#from podsprint.views import AboutTemplateView
-# Create your views here.
 
 def users_root(request):
     return HttpResponseRedirect(reverse(settings.LOGIN_URL))
 
 def login_view(request):
     return render(request, 'registration/login.html')
-
 
 def check_username(request):
     if request.method == 'POST':
@@ -43,35 +36,7 @@ def register_view(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             try:
-                username_ = request.POST.get('username').lower()
-                email = request.POST.get('email').lower()
-
-                with schema_context('public'):
-                    public_client = Client.objects.filter(schema_name='public').first()
-                    public_domain = Domain.objects.filter(tenant=public_client).values('domain').first()
-                    #domain_ = username_ + '.' + str(public_domain['domain'])
-                    domain_ = username_
-
-                
-                    tenant = Client(schema_name=username_, name=email)
-                    tenant.save()
-
-                    domain = Domain()
-                    domain.domain = domain_
-                    domain.tenant = tenant
-                    domain.is_primary = True
-                    domain.save()
-
-                    user = form.save(commit=False)
-                    user.username = username_
-                    user.schema = tenant
-                    user.save()
-
-                    tenant.user = user
-                    tenant.save()
-
-                # Resto del código
-
+                user = form.save                
                 login(request, user)
                 messages.success(request, 'Registration successful.')
                 return redirect('index')
@@ -110,11 +75,3 @@ class CustomLogoutView(View):
     def get(self, request):
         logout(request)
         return redirect('index')
-
-        # user_schema = request.user.CustomUser.schema
-        # # Obtén el dominio del usuario desde el objeto de solicitud
-        # user_domain = f"{user_schema.schema_name}.localhost"
-        # # Construye la URL de redirección completa con el dominio del usuario
-        # redirect_url = f"http://{user_domain}/"
-        # # Redirige al usuario a la URL con su dominio personalizado
-        # return redirect('index')

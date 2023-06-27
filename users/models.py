@@ -9,16 +9,15 @@ class CustomUser(AbstractUser):
 
     # Aquí puedo agregar los campos adicionales que necesites para el modelo users
     username = models.CharField(_('username'), max_length=150, unique=True)
-    email = models.EmailField(_('email address'), unique=True)
-    schema = models.OneToOneField('accounts.Client', on_delete = models.CASCADE)
+    email = models.EmailField(_('email address'), unique=True)    
     stripe_customer_id = models.CharField(max_length=100, blank=True, null=True)
     subscription = models.CharField(max_length=20, blank=True, null=True)
     country = models.CharField(max_length=50, blank=True, null=True)
     language = models.CharField(max_length=10, blank=True, null=True)
     birthday = models.DateField(verbose_name=_("Birthday"), blank=True, null=True,
         validators=[
-            MinValueValidator(limit_value=date(1900, 1, 1)),  # Ejemplo de límite mínimo
-            MaxValueValidator(limit_value=date.today())  # Ejemplo de límite máximo
+            MinValueValidator(limit_value=date(1900, 1, 1)),  
+            MaxValueValidator(limit_value=date.today())  
         ]
     )
 
