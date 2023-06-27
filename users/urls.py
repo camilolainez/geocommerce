@@ -9,5 +9,4 @@ urlpatterns = [
     path('logout/', views.CustomLogoutView.as_view(), name='logout' ),
     path('register/', views.register_view, name='register'),
     path('check-username/', views.check_username, name='check_username')
-    # Otras URLs específicas de la aplicación 'accounts'
 ]

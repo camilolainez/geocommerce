@@ -14,7 +14,7 @@ def users_root(request):
     return HttpResponseRedirect(reverse(settings.LOGIN_URL))
 
 def login_view(request):
-    return render(request, 'registration/login.html')
+    return render(request, 'users/login.html')
 
 def check_username(request):
     if request.method == 'POST':
@@ -30,7 +30,7 @@ def check_username(request):
 def register_view(request):
     if request.method == 'GET':
         form = CustomUserCreationForm()
-        return render(request, 'registration/register.html', {'form': form})
+        return render(request, 'users/register.html', {'form': form})
 
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -69,7 +69,7 @@ class CustomLoginView(LoginView):
             login(request, user)
             return redirect('index')        
         else:
-            return render(request, 'user/login.html', {'error': 'Invalid login'})
+            return render(request, 'users/login.html', {'error': 'Invalid login'})
         
 class CustomLogoutView(View):
     def get(self, request):

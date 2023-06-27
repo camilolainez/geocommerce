@@ -18,8 +18,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     # path('logout/', views.UserLogoutView.as_view(), name='logout'),
 
-    #gencast
-    path('gencast/', include('gencast.urls')),
+    #products
 
 ]
 
